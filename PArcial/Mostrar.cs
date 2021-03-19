@@ -66,8 +66,8 @@ namespace PArcial
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            string mayorprom = mostrargrid.Average(p => Temperatura);
-            label1.Text = (mayorprom).ToString();
+            /*string mayorprom = mostrargrid.Average(p => Temperatura);
+            label1.Text = (mayorprom).ToString();*/
         }
     }
 }
