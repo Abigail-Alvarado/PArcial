@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="datos.cs" />
     <Compile Include="departamentos.cs" />
     <Compile Include="Depto.cs">
       <SubType>Form</SubType>
@@ -61,6 +62,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="temperaturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="temperaturas.Designer.cs">
+      <DependentUpon>temperaturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="total.cs" />
     <EmbeddedResource Include="Depto.resx">
       <DependentUpon>Depto.cs</DependentUpon>
     </EmbeddedResource>
@@ -76,6 +84,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="temperaturas.resx">
+      <DependentUpon>temperaturas.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

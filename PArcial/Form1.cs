@@ -23,5 +23,12 @@ namespace PArcial
             vclientes.Show();
             this.SetVisibleCore(false);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            temperaturas vclientes = new temperaturas();
+            vclientes.Show();
+            this.SetVisibleCore(false);
+        }
     }
 }
