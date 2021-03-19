@@ -19,7 +19,9 @@ namespace PArcial
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Depto vclientes = new Depto();
+            vclientes.Show();
+            this.SetVisibleCore(false);
         }
     }
 }
