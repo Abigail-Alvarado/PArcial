@@ -30,5 +30,12 @@ namespace PArcial
             vclientes.Show();
             this.SetVisibleCore(false);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Mostrar vclientes = new Mostrar();
+            vclientes.Show();
+            this.SetVisibleCore(false);
+        }
     }
 }

@@ -106,7 +106,7 @@ namespace PArcial
             tempmostrar.Nombre = tempnombre + " " + tempc;
 
             tempe.Add(temppriedades);
-            //mostrargrid.Add(tempmostrar);
+            
             guardar();
             limpiar();
             MessageBox.Show("Propiedad agregado correctamente");
