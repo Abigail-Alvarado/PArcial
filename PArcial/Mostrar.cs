@@ -20,6 +20,18 @@ namespace PArcial
         {
             InitializeComponent();
         }
+        void guardar()
+        {
+            FileStream stream = new FileStream(archivo3, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+
+            for (int i = 0; i < mostrargrid.Count; i++)
+            {
+                writer.WriteLine(mostrargrid[i].Nombre);
+                writer.WriteLine(mostrargrid[i].Temperatura);
+            }
+            writer.Close();
+        }
         void leer_datos()
         {
             FileStream stream3 = new FileStream(archivo3, FileMode.Open, FileAccess.Read);
@@ -33,6 +45,7 @@ namespace PArcial
             }
             //Cerrar el archivo, esta linea es importante porque sino despues de correr varias veces el programa daría error de que el archivo quedó abierto muchas veces. Entonces es necesario cerrarlo despues de terminar de leerlo.
             reader3.Close();
+            mostrar();
         }
         void mostrar()
         {
@@ -66,8 +79,7 @@ namespace PArcial
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            /*string mayorprom = mostrargrid.Average(p => Temperatura);
-            label1.Text = (mayorprom).ToString();*/
+
         }
     }
 }

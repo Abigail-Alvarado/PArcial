@@ -18,6 +18,9 @@ namespace PArcial
 
         List<datos> tempe = new List<datos>();
         string archivo2 = "RegistroTemperaturas.txt";
+
+        List<total> mostrargrid = new List<total>();
+        string archivo3 = "mostrar.txt";
         public temperaturas()
         {
             InitializeComponent();
@@ -27,16 +30,37 @@ namespace PArcial
         }
         void guardar()
         {
-            FileStream stream = new FileStream(archivo2, FileMode.OpenOrCreate, FileAccess.Write);
+            FileStream stream = new FileStream(archivoC, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
+
+            for (int i = 0; i < deptos.Count; i++)
+            {
+                writer.WriteLine(deptos[i].Nombre);
+                writer.WriteLine(deptos[i].Numeroidentificacion);
+            }
+            writer.Close();
+
+            FileStream stream2 = new FileStream(archivo2, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer2 = new StreamWriter(stream2);
 
             for (int i = 0; i < tempe.Count; i++)
             {
-                writer.WriteLine(tempe[i].Nombre);
-                writer.WriteLine(tempe[i].Temperatura);
-                writer.WriteLine(tempe[i].Fecha);
+                writer2.WriteLine(tempe[i].Nombre);
+                writer2.WriteLine(tempe[i].Temperatura);
+                writer2.WriteLine(tempe[i].Fecha);
             }
-            writer.Close();
+            writer2.Close();
+
+            FileStream stream3 = new FileStream(archivo3, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer3 = new StreamWriter(stream3);
+
+            for (int i = 0; i < mostrargrid.Count; i++)
+            {
+                writer3.WriteLine(mostrargrid[i].Nombre);
+                writer3.WriteLine(mostrargrid[i].Temperatura);
+                
+            }
+            writer3.Close();
         }
         void leer_datos()
         {
@@ -65,8 +89,19 @@ namespace PArcial
                 deptos.Add(temppropietarios);
 
             }
-            //Cerrar el archivo, esta linea es importante porque sino despues de correr varias veces el programa daría error de que el archivo quedó abierto muchas veces. Entonces es necesario cerrarlo despues de terminar de leerlo.
             reader2.Close();
+
+            FileStream stream3 = new FileStream(archivo3, FileMode.Open, FileAccess.Read);
+            StreamReader reader3 = new StreamReader(stream3);
+            while (reader3.Peek() > -1)
+            {
+                total temppropietarios = new total();
+                temppropietarios.Nombre = reader3.ReadLine();
+                temppropietarios.Temperatura = reader3.ReadLine();
+                mostrargrid.Add(temppropietarios);
+
+            }
+            reader3.Close();
         }
         void limpiar()
         {
@@ -89,8 +124,9 @@ namespace PArcial
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            total tempmostrar = new total();
             datos temppriedades = new datos();
+            total temp = new total();
+
             temppriedades.Temperatura = textBox2.Text;
             temppriedades.Nombre = comboBox1.Text;
             string tempnombre = "";
@@ -103,13 +139,18 @@ namespace PArcial
             comboBox1.DataSource = deptos;
             tempc = comboBox1.SelectedValue.ToString();
 
-            tempmostrar.Nombre = tempnombre + " " + tempc;
+            temp.Nombre = comboBox1.Text;
+            temp.Temperatura = textBox2.Text;
+            
+
+
 
             tempe.Add(temppriedades);
-            
+            mostrargrid.Add(temp);
+
             guardar();
             limpiar();
-            MessageBox.Show("Propiedad agregado correctamente");
+            MessageBox.Show("Temperatura agregada correctamente");
 
         }
 
